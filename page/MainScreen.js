@@ -1,16 +1,38 @@
 import React, { Component } from "react";
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
+
+const style = StyleSheet.create({
+    container: {
+        backgroundColor: '#AEB404',
+        flex: 1
+    },
+    text: {
+        fontSize: 30,
+        color: '#21610B',
+        textAlign: 'center'
+    },
+    Button: {
+        color: 'black',
+        fontSize: 40,
+    },
+    input: {
+        height: 40,
+        margin: 50,
+        borderWidth: 5,
+        padding: 10,
+        color: 'black'
+    },
+})
 
 export default class MainScreen extends Component {
     render() {
         return (
-            <View>
+            <View style={style.container}>
                 <Text style={{ fontSize: 30 }}>Main Screen</Text>
-                <Button onPress={() => this.goPostScreen()} title="Go Post Screen" />
-                <Button onPress={() => this.goFilterScreen()} title="Go Filter Screen" />
-                <Button onPress={() => this.goWriteScreen()} title="Go Write Screen" />
-                <Button onPress={() => this.goLetterScreen()} title="Go Letter Screen" />
-                <Button onPress={() => this.goEditScreen()} title="Go Edit Screen" />
+                <Button onPress={() => this.goPostScreen()} title=" 게시글" />
+                <Button onPress={() => this.goLetterScreen()} title="쪽지함 " />
+                <Button color={style.Button.color} onPress={() => this.goWriteScreen()} title="글 작성하기" />
+                <Button color={style.Button.color} onPress={() => this.goFilterScreen()} title="필터" />
 
             </View>
         )
@@ -19,16 +41,14 @@ export default class MainScreen extends Component {
     goPostScreen() {
         this.props.navigation.navigate('Post')
     }
-    goFilterScreen() {
-        this.props.navigation.navigate('Filter')
-    }
     goWriteScreen() {
         this.props.navigation.navigate('Write')
     }
     goLetterScreen() {
         this.props.navigation.navigate('Letter')
     }
-    goEditScreen() {
-        this.props.navigation.navigate('Edit')
+    goFilterScreen() {
+        this.props.navigation.navigate('Filter')
     }
+
 }

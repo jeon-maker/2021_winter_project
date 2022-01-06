@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, Button } from 'react-native';
 
+
+
 export default class ChatScreen extends Component {
     render() {
         return (
@@ -14,3 +16,4 @@ export default class ChatScreen extends Component {
         this.props.navigation.navigate('Post')
     }
 }
+
