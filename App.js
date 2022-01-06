@@ -19,6 +19,7 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
+
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Start">
         <Stack.Screen name="Start" component={StartScreen}
@@ -71,14 +72,8 @@ export default function App() {
           }} />
       </Stack.Navigator>
     </NavigationContainer>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
