@@ -15,6 +15,8 @@ import VoteScreen from './page/VoteScreen';
 import SuggestScreen from './page/SuggestScreen';
 import ChatScreen from './page/ChatScreen';
 import LoginScreen from './page/LoginScreen';
+import SignupScreen from './page/SignupScreen';
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -30,6 +32,10 @@ export default function App() {
           options={{
             title: '회원가입화면'
           }} />
+        <Stack.Screen name="SignUP" component={SignupScreen}
+          options={{
+            title: 'SignUP 화면'
+          }} />  
         <Stack.Screen name="Login" component={LoginScreen}
           options={{
             title: '로그인화면'
@@ -75,5 +81,3 @@ export default function App() {
 
   );
 }
-
-
