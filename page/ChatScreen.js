@@ -16,4 +16,3 @@ export default class ChatScreen extends Component {
         this.props.navigation.navigate('Post')
     }
 }
-
