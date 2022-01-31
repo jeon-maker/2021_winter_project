@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, Button, StyleSheet } from 'react-native';
+import LoginScreen from "./LoginScreen";
+import firestore , { doc  } from '@react-native-firebase/firestore';
 
 const style = StyleSheet.create({
     container: {
@@ -23,16 +25,28 @@ const style = StyleSheet.create({
         color: 'black'
     },
 })
+
+
+
+
 export default class PostScreen extends Component {
+
+    Test = ()=>{
+        alert(LoginScreen.prevState.id);
+    }
+    
+
     render() {
         return (
             <View style={style.container}>
                 <Text style={{ fontSize: 30 }}>Post Screen</Text>
+                
                 <Button color={style.Button.color} onPress={() => this.goToVoteScreen()} title='투표하기' />
                 <Button color={style.Button.color} onPress={() => this.goToSuggetScreen()} title='제안하기' />
                 <Button color={style.Button.color} onPress={() => this.goToChatScreen()} title='대화하기' />
                 <Button color={style.Button.color} onPress={() => this.goEditScreen()} title="Go Edit Screen (작성자 전용)" />
                 <Button color={style.Button.color} onPress={() => this.backToMainScreen()} title='메인화면' />
+                <Button color={style.Button.color} onPress={() => this.Test()} title='ID 보기' />
             </View>
         )
     }

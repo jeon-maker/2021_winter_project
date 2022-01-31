@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
 import firestore , { doc  } from '@react-native-firebase/firestore';
 
-
 const style = StyleSheet.create({
     container: {
         backgroundColor: '#AEB404',
@@ -30,8 +29,11 @@ export default class LoginScreen extends Component {
         id: '',
         id_list:[],
         pw:'',
-        pw_list:[]
+        pw_list:[],
+        prevID: null
     }
+
+    
 
     onChageID = (event) =>{
         this.setState({
@@ -57,7 +59,8 @@ export default class LoginScreen extends Component {
                 }else if(doc.exists & (prevState.id == doc.data().ID & prevState.pw != doc.data().PW))
                 {alert("비밀번호가 틀렸습니다")}
                 else if(doc.exists & (prevState.id ==doc.data().ID & prevState.pw == doc.data().PW)){
-                    alert("로그인 성공!")
+                    alert("로그인 성공!");
+                    this.props.navigation.navigate('Main',{prevID : this.state.id});
                 }
             })
         })
@@ -88,3 +91,4 @@ export default class LoginScreen extends Component {
         this.props.navigation.navigate('Start')
     }
 }
+

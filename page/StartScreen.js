@@ -42,8 +42,6 @@ export default class StartScreen extends Component {
                     <Button color={style.Button.color} backgroundColor={style.Button.backgroundColor} onPress={() => this.gotoJoinScreen()} title='회원가입' />
                     <Text></Text>
                     <Text></Text>
-
-                    <Button color={style.Button.color} backgroundColor={style.Button.backgroundColor} onPress={() => this.gotoMainScreen()} title='메인화면' />
                 </View>
             </View >
 
@@ -54,8 +52,5 @@ export default class StartScreen extends Component {
     }
     gotoJoinScreen() {
         this.props.navigation.navigate('Join')
-    }
-    gotoMainScreen() {
-        this.props.navigation.navigate('Main')
     }
 }

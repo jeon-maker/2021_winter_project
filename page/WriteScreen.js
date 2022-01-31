@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
+import { View, Text, Button, StyleSheet, TextInput, ScrollView } from 'react-native';
+import firestore , { doc  } from '@react-native-firebase/firestore';
 
-const post = () => {
-    const [time, onChangeTime] = React.useState("약속 시간")
-    const [menu, onChangeMenu] = React.useState("메뉴")
-    const [personnel, onChnagePersonnel] = React.useState("인원")
-};
-
+const date = new Date();
 const style = StyleSheet.create({
     container: {
         backgroundColor: '#AEB404',
@@ -31,31 +27,118 @@ const style = StyleSheet.create({
 })
 
 export default class WriteScreen extends Component {
+    state = {
+        date:'',
+        age:'',
+        level:'',
+        place:'',
+        uniform : '',
+        contact : '',
+        etc : '',
+        prevID : this.props.route.params.prevID
+    }
+
+    onChangeDate = (event) =>{
+        this.setState({
+            date : event
+        })
+    }
+    onChangeAge = (event) =>{
+        this.setState({
+            age : event
+        })
+    }
+    onChangeLevel = (event) =>{
+        this.setState({
+            level : event
+        })
+    }
+    onChangePlace = (event) =>{
+        this.setState({
+            place : event
+        })
+    }
+    onChangeUniform = (event) => {
+        this.setState({
+            uniform : event
+        })
+    }
+    onChangeContact = (event) => {
+        this.setState({
+            contact : event
+        })    
+    }
+    onChageEtc = (event) =>{
+        this.setState({
+            etc : event
+        })
+    }
+
+    onWrite =()=>{
+        this.setState(prevState=>{
+            const db = firestore().collection('Posts').doc(this.state.prevID + date );
+            db.set({
+                Date : prevState.date,
+                Age : prevState.age,
+                Level : prevState.level,
+                Place : prevState.place,
+                Uniform : prevState.uniform,
+                Contact : prevState.contact,
+                Etc : prevState.etc,
+            })
+
+            })
+            alert('게시글 올리기 성공!');
+            this.backToMainScreen();
+    }
     render() {
         return (
+            <ScrollView>
             <View>
                 <Text style={{ fontSize: 30 }}>Write Screen</Text>
+                <Text>{this.state.prevID}</Text>
                 <TextInput
                     style={style.input}
-                    onChangeText={post.onChangeTime}
-                    placeholder="시간을 입력하세요"
+                    onChangeText={this.onChangeDate}
+                    placeholder="날짜, 시간 을 입력하세요"
                 />
                 <TextInput
                     style={style.input}
-                    onChangeText={post.onChangeMenu}
-                    placeholder="메뉴를 입력하세요"
+                    onChangeText={this.onChangeAge}
+                    placeholder="연령대를 입력하세요"
                 />
                 <TextInput
                     style={style.input}
-                    onChangeText={post.onChnagePersonnel}
-                    placeholder="인원을 입력하세요"
+                    onChangeText={this.onChangeLevel}
+                    placeholder="팀 레벨을 입력하세요"
                 />
-                <Button onPress={() => this.backToMainScreen()} title='게시글 올리기' />
+                <TextInput
+                    style={style.input}
+                    onChangeText={this.onChangePlace}
+                    placeholder="장소를 입력하세요"
+                />
+                <TextInput
+                    style={style.input}
+                    onChangeText={this.onChangeUniform}
+                    placeholder="유니폼 상의 색상 :@@@  하의 색상:@@@"
+                />
+                <TextInput
+                    style={style.input}
+                    onChangeText={this.onChangeContact}
+                    placeholder="연락망을 입력하세요"
+                />
+                <TextInput
+                    style={style.input}
+                    onChangeText={this.onChangeContact}
+                    placeholder="기타 다른 말 ( 비용, 용병 가능 여부를 반드시 포함하세요)"
+                />
+                <Button onPress={() => this.onWrite()} title='게시글 올리기' />
                 <Button onPress={() => this.backToMainScreen()} title='Back to Main' />
             </View>
+            </ScrollView>
         )
     }
     backToMainScreen() {
-        this.props.navigation.navigate('Main')
+        this.props.navigation.navigate('Main', {prevID : this.state.prevID})
     }
 }
