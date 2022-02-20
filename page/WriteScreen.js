@@ -35,6 +35,7 @@ export default class WriteScreen extends Component {
         uniform : '',
         contact : '',
         etc : '',
+        link : '',
         prevID : this.props.route.params.prevID
     }
 
@@ -68,6 +69,7 @@ export default class WriteScreen extends Component {
             contact : event
         })    
     }
+    
     onChageEtc = (event) =>{
         this.setState({
             etc : event
@@ -76,7 +78,7 @@ export default class WriteScreen extends Component {
 
     onWrite =()=>{
         this.setState(prevState=>{
-            const db = firestore().collection('Posts').doc(this.state.prevID + date );
+            const db = firestore().collection('Posts').doc(this.state.prevID + " "+ date );
             db.set({
                 Date : prevState.date,
                 Age : prevState.age,
@@ -84,6 +86,7 @@ export default class WriteScreen extends Component {
                 Place : prevState.place,
                 Uniform : prevState.uniform,
                 Contact : prevState.contact,
+                Link : true,
                 Etc : prevState.etc,
             })
 
