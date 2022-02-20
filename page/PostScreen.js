@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet , ScrollView } from 'react-native';
 import LoginScreen from "./LoginScreen";
 import firestore , { doc  } from '@react-native-firebase/firestore';
+import Load_post from "./load";
 
 const style = StyleSheet.create({
     container: {
@@ -30,28 +31,29 @@ const style = StyleSheet.create({
 
 
 export default class PostScreen extends Component {
-
-    Test = ()=>{
-        alert(LoginScreen.prevState.id);
+    state = {
+        prevID : this.props.route.params.prevID,
+        doc_id : this.props.route.params.doc_id,
+        doc_item : this.props.route.params.doc_item,
     }
     
 
     render() {
+        console.log("***** Post Screen 의 State : " , this.state)
+        
         return (
+            
             <View style={style.container}>
+                <ScrollView>
                 <Text style={{ fontSize: 30 }}>Post Screen</Text>
-                
-                <Button color={style.Button.color} onPress={() => this.goToVoteScreen()} title='투표하기' />
-                <Button color={style.Button.color} onPress={() => this.goToSuggetScreen()} title='제안하기' />
-                <Button color={style.Button.color} onPress={() => this.goToChatScreen()} title='대화하기' />
-                <Button color={style.Button.color} onPress={() => this.goEditScreen()} title="Go Edit Screen (작성자 전용)" />
                 <Button color={style.Button.color} onPress={() => this.backToMainScreen()} title='메인화면' />
-                <Button color={style.Button.color} onPress={() => this.Test()} title='ID 보기' />
+                <Load_post id ={this.state.doc_id} item ={this.state.doc_item} />
+                </ScrollView>
             </View>
         )
     }
     backToMainScreen() {
-        this.props.navigation.navigate('Main')
+        this.props.navigation.navigate('Main',{prevID : this.state.prevID})
     }
     goToChatScreen() {
         this.props.navigation.navigate('Chat')

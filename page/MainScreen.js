@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, Button, StyleSheet } from 'react-native';
 import firestore , { doc  } from '@react-native-firebase/firestore';
+import { render } from "react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod";
+import Load_post from "./load";
 
 const style = StyleSheet.create({
     container: {
@@ -25,51 +27,40 @@ const style = StyleSheet.create({
     },
 })
 
-
 export default class MainScreen extends Component {
     state = {
         prevID : this.props.route.params.prevID,
         doc_id : [],
         doc_item : [],
-        doc_value : []
-    }
-
-    onLoad = () =>{
-        const docRef = firestore().collection("Posts");
-        docRef.get().then(function(querySnapshot) {
-            if (querySnapshot) {
-                querySnapshot.forEach(function(doc){       
-                    const docs = doc.data();       
-                    console.log('문서의 id :'+doc.id);                                  
-                         for(let item in docs){                             
-                              console.log('key :'+ item);
-                              console.log('value :'+ docs[item]);                                                            
-                         }
-                });
-            } else {
-                console.log("No such document!");
-            }
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        });
-        console.log("this is state : ")
     }
     
-    onLoad2 = () =>{
+    
+    goPostScreen = () =>{
+        const self = this;
         const db = firestore().collection('Posts');
-        db.get().then(function (alldata) {
-            alldata.forEach(function(doc) {
-                return(
-                    <Text> {doc.id} </Text>
-                )
-            })
-            
+        db.get().then((allData)=>{
+            const arr1 = []
+            const arr2 = []
+            allData.forEach((doc)=>{
+            arr1.push(doc.id);
+            arr2.push(doc.data());
+            const setid = new  Set(arr1);
+            const setitem = new Set(arr2);
+            const unique_id = [...setid];
+            const unique_item = [...setitem]
+            self.setState({
+                doc_id : unique_id,
+                doc_item : unique_item,
+            })   
+            });
+            console.log("Post로 넘길때의 Main Screen state 확인 : ", this.state);
+            this.props.navigation.navigate('Post',{prevID:this.state.prevID, doc_id:this.state.doc_id , doc_item:this.state.doc_item}) 
         })
-    }
+           }
     
     
     render() {
-        this.onLoad2();
+
         return (
             <View style={style.container}>
                 <Text style={{ fontSize: 30 }}>Main Screen</Text>
@@ -79,15 +70,10 @@ export default class MainScreen extends Component {
                 <Button onPress={() => this.goLetterScreen()} title="쪽지함 " />
                 <Button color={style.Button.color} onPress={() => this.goWriteScreen()} title="글 작성하기" />
                 <Button color={style.Button.color} onPress={() => this.goFilterScreen()} title="필터" />
-                <Button color={style.Button.color} onPress={() => this.onLoad2()} title="DB 확인" />
-                <Button color={style.Button.color} onPress={() => this.onTest()} title="DB 확인 test" />
             </View>
         )
     }
 
-    goPostScreen() {
-        this.props.navigation.navigate('Post',{prevID:this.state.prevID})
-    }
     goWriteScreen() {
         this.props.navigation.navigate('Write',{prevID:this.state.prevID})
     }
