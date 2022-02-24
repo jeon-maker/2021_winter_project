@@ -41,7 +41,7 @@ export default class EditScreen extends Component {
         doc_item : this.props.route.params.doc_item,
     }
     
-    testing = () =>{
+    loading = () =>{
         const users_posts = []
         const len = this.state.doc_id.length
         for(var i = 0 ; i<len ; i++){
@@ -59,16 +59,25 @@ export default class EditScreen extends Component {
                 {id}
             </Text>
             <Button onPress={()=>this.delete_(id)} title={"delete"}/>
+            <Button onPress={()=>this.link(id)} title={"매치 성사"}/>
             </View>    
             </View>
             ))
         )
     }
-
     delete_ = (id) =>{
         const db = firestore().collection('Posts');
         db.doc(id).delete();
         alert("삭제 완료");
+        this.props.navigation.navigate('Main' , {prevID:this.state.prevID})
+    }
+
+    link = (id) =>{
+        const db = firestore().collection('Posts');
+        db.doc(id).update({
+                Link : false
+        })
+        alert("매치 성사로 바꿨습니다.")
         this.props.navigation.navigate('Main' , {prevID:this.state.prevID})
     }
 
@@ -81,11 +90,11 @@ export default class EditScreen extends Component {
     }
 
     render() {
-        this.testing();
+        this.loading();
         return (
             <View style={style.container}>
             {/* <Load_users_post id ={this.state.prevID} doc_id ={this.state.doc_id} doc_item ={this.state.doc_item} /> */}
-            <this.testing/> 
+            <this.loading/> 
             </View>
         )
     }

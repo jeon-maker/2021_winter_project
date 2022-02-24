@@ -40,8 +40,13 @@ const Load_post = (props) =>{
     console.log("************ Load의  state.item의  : " , (props.item[0]))
 
     for(var i = 0 ; i< len ; i++){
+        if(!props.item[i].Link){
+            var Link = "매칭 완료"
+        }else{
+            var Link = " 상대를 찾는중"
+        }
         new_arr.push([" 나이 : " , props.item[i].Age,"  연락처: ", props.item[i].Contact, "  날짜: ", props.item[i].Date,
-    "  수준: ", props.item[i].Level , "  장소: ", props.item[i].Place, "  유니폼: ", props.item[i].Uniform, " 매치 성사 여부: " , props.item[i].Link
+    "  수준: ", props.item[i].Level , "  장소: ", props.item[i].Place, "  유니폼: ", props.item[i].Uniform, " 매치 성사 여부: " , Link
     ])
     }
         console.log("new_arr : ", new_arr);
