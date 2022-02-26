@@ -1,35 +1,7 @@
 import React, { Component, useState } from "react";
 import { View, Text, Button, StyleSheet, TextInput , ScrollView } from 'react-native';
 import firestore , { doc  } from '@react-native-firebase/firestore';
-
-
-
-
-
-
-const style = StyleSheet.create({
-    container: {
-        backgroundColor: '#B9BFFF',
-        flex: 1
-    },
-    text: {
-        fontSize: 30,
-        color: '#21610B',
-        textAlign: 'center'
-    },
-    Button: {
-        color: 'black',
-        fontSize: 40,
-        backgroundColor: 'blue'
-    },
-    input: {
-        height: 40,
-        margin: 50,
-        borderWidth: 5,
-        padding: 10,
-        color: 'black'
-    },
-})
+import style from "./style";
 
 
 

@@ -1,29 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
 import firestore , { doc  } from '@react-native-firebase/firestore';
+import style from "./style";
 
-const style = StyleSheet.create({
-    container: {
-        backgroundColor: '#B9BFFF',
-        flex: 1
-    },
-    text: {
-        fontSize: 30,
-        color: '#21610B',
-        textAlign: 'center'
-    },
-    Button: {
-        color: 'black',
-        fontSize: 40,
-    },
-    input: {
-        height: 40,
-        margin: 50,
-        borderWidth: 5,
-        padding: 10,
-        color: 'black'
-    },
-})
 export default class LoginScreen extends Component {
     state = {
         id: '',
@@ -82,8 +61,8 @@ export default class LoginScreen extends Component {
                     placeholder="PW"
                     value={this.state.pw}
                 />
-                <Button title ="로그인" onPress={this.onLogin}/>
-                <Button onPress={() => this.gotoStartScreen()} title='back to Start' />
+                <Button color={style.Button.color} backgroundColor={style.Button.backgroundColor} title ="로그인" onPress={this.onLogin}/>
+                <Button color={style.Button.color} backgroundColor={style.Button.backgroundColor} onPress={() => this.gotoStartScreen()} title='back to Start' />
             </View>
         )
     }

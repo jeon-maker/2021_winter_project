@@ -3,35 +3,7 @@ import { View, Text, Button , StyleSheet } from 'react-native';
 import firestore , { doc  } from '@react-native-firebase/firestore';
 import Load_users_post from "./edit_load";
 import TouchHistoryMath from "react-native/Libraries/Interaction/TouchHistoryMath";
-
-const style = StyleSheet.create({
-    container: {
-        backgroundColor: '#B9BFFF',
-        flex: 1,
-        margin : 20
-    },
-    text: {
-        fontSize: 30,
-        color: '#21610B',
-        textAlign: 'center'
-    },
-    Button: {
-        color: 'black',
-        fontSize: 40,
-    },
-    input: {
-        height: 40,
-        margin: 50,
-        borderWidth: 5,
-        padding: 10,
-        color: 'black'
-    },
-    box : {
-         
-        margin: 20,
-        backgroundColor:'white',        
-    }
-})
+import style from "./style";
 
 
 export default class EditScreen extends Component {

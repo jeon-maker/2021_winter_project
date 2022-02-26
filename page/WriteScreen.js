@@ -1,30 +1,10 @@
 import React, { Component } from "react";
 import { View, Text, Button, StyleSheet, TextInput, ScrollView } from 'react-native';
 import firestore , { doc  } from '@react-native-firebase/firestore';
+import style from "./style";
 
 const date = new Date();
-const style = StyleSheet.create({
-    container: {
-        backgroundColor: '#B9BFFF',
-        flex: 1
-    },
-    text: {
-        fontSize: 25,
-        color: 'black',
-        textAlign: 'center'
-    },
-    Button: {
-        color: 'black',
-        fontSize: 40,
-    },
-    input: {
-        height: 40,
-        margin: 50,
-        borderWidth: 5,
-        padding: 10,
-        color: 'black'
-    },
-})
+
 
 export default class WriteScreen extends Component {
     state = {
@@ -96,9 +76,8 @@ export default class WriteScreen extends Component {
                 Link : true,
                 Etc : prevState.etc,
             })
-
             })
-            alert('게시글 올리기 성공!');
+            alert(" 게시글을 올렸습니다. 양식에 어긋날 시, 삭제 될 수 있습니다.")
             this.backToMainScreen();
     }
     render() {
@@ -137,7 +116,7 @@ export default class WriteScreen extends Component {
                 <TextInput
                     style={style.input}
                     onChangeText={this.onChangeUniform}
-                    placeholder="유니폼 상의 색상 :@@@  하의 색상:@@@"
+                    placeholder="유니폼 색상 "
                 />
                 <TextInput
                     style={style.input}

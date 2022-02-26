@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
-
+import style from "./style";
 const UselessTextInput = () => {
     const [text, onChangeText] = React.useState("Useless Text");
     const [Name, onChangeName] = React.useState("Name");
@@ -8,29 +8,6 @@ const UselessTextInput = () => {
 };
 
 
-const style = StyleSheet.create({
-    container: {
-        backgroundColor: '#AEB404',
-        flex: 1
-    },
-    text: {
-        fontSize: 30,
-        color: '#21610B',
-        textAlign: 'center'
-    },
-    Button: {
-        color: 'black',
-        fontSize: 40,
-        backgroundColor: 'blue'
-    },
-    input: {
-        height: 40,
-        margin: 50,
-        borderWidth: 5,
-        padding: 10,
-        color: 'black'
-    },
-})
 
 
 

@@ -3,29 +3,7 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import firestore , { doc  } from '@react-native-firebase/firestore';
 import { render } from "react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod";
 import Load_post from "./load";
-
-const style = StyleSheet.create({
-    container: {
-        backgroundColor: '#B9BFFF',
-        flex: 1
-    },
-    text: {
-        fontSize: 30,
-        color: '#21610B',
-        textAlign: 'center'
-    },
-    Button: {
-        color: 'black',
-        fontSize: 40,
-    },
-    input: {
-        height: 40,
-        margin: 50,
-        borderWidth: 5,
-        padding: 10,
-        color: 'black'
-    },
-})
+import style from "./style";
 
 export default class MainScreen extends Component {
     state = {
@@ -86,17 +64,23 @@ export default class MainScreen extends Component {
         return (
             <View style={style.container}>
                 <Text style={{ fontSize: 30 }}>Main Screen</Text>
-                <Text style={{ fontSize: 30  ,color:'blue'}}> 환영합니다 {this.props.route.params.prevID} 님</Text>
-                <Text style={{ fontSize: 30  ,color:'blue'}}> 환영합니다 {this.state.prevID} 님</Text>
-                <Button onPress={() => this.goPostScreen()} title=" 게시글" />
+                <Text style={style.text}> 환영합니다 {this.props.route.params.prevID} 님</Text>
+                <Text></Text>
+                <Text></Text>
+                <Text></Text>
+                <Button color={style.Button.color} onPress={() => this.goPostScreen()} title=" 게시글" />
+                <Text></Text>
+                <Text></Text>
                 <Button color={style.Button.color} onPress={() => this.goWriteScreen()} title="글 작성하기" />
-                <Button color={style.Button.color} onPress={() => this.goFilterScreen()} title="필터" />
+                <Text></Text>
+                <Text></Text>
                 <Button color={style.Button.color} onPress={() => this.goEditScreen()} title="내가 쓴 글 " />
             </View>
         )
     }
 
     goWriteScreen() {
+        alert("반드시 지정된 양식을 따라주세요. 양식에 어긋날 시, 삭제 될 수 있습니다.")
         this.props.navigation.navigate('Write',{prevID:this.state.prevID})
     }
     goLetterScreen() {

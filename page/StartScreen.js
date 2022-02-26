@@ -1,26 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, Button, StyleSheet } from 'react-native';
-
-const style = StyleSheet.create({
-    container: {
-        backgroundColor: '#B9BFFF',
-        flex: 1
-    },
-    text: {
-        fontSize: 30,
-        color: '#088A68',
-        textAlign: 'center'
-    },
-    Button: {
-        color: '#088A68',
-        fontSize: 40,
-        backgroundColor: '#000000',
-
-    }
-})
-
-
-
+import style from "./style";
 
 export default class StartScreen extends Component {
     render() {

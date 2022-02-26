@@ -3,29 +3,7 @@ import { View, Text, Button, StyleSheet , ScrollView } from 'react-native';
 import LoginScreen from "./LoginScreen";
 import firestore , { doc  } from '@react-native-firebase/firestore';
 import Load_post2 from "./load";
-
-const style = StyleSheet.create({
-    container: {
-        backgroundColor: '#B9BFFF',
-        flex: 1
-    },
-    text: {
-        fontSize: 30,
-        color: '#21610B',
-        textAlign: 'center'
-    },
-    Button: {
-        color: 'black',
-        fontSize: 40,
-    },
-    input: {
-        height: 40,
-        margin: 50,
-        borderWidth: 5,
-        padding: 10,
-        color: 'black'
-    },
-})
+import style from "./style";
 
 
 

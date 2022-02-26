@@ -1,34 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
-
-const style = StyleSheet.create({
-    container: {
-        backgroundColor: '#B9BFFF',
-        flex: 1,
-        margin : 20
-    },
-    text: {
-        fontSize: 30,
-        color: '#21610B',
-        textAlign: 'center'
-    },
-    Button: {
-        color: 'black',
-        fontSize: 40,
-    },
-    input: {
-        height: 40,
-        margin: 50,
-        borderWidth: 5,
-        padding: 10,
-        color: 'black'
-    },
-    box : {
-         
-        margin: 20,
-        backgroundColor:'white',        
-    }
-})
+import style from "./style";
 
 
 const Load_post = (props) =>{
@@ -47,7 +19,7 @@ const Load_post = (props) =>{
         }else{
             var Link = " 상대를 찾는중"
         }
-        new_arr.push([ "  날짜: ", props.item[i].Date,"시간 : ",props.item[i].Time," 나이 : " , props.item[i].Age,"  연락처: ", props.item[i].Contact,
+        new_arr.push([ "  날짜: ", props.item[i].Date, " 시간 : ",props.item[i].Time," 나이 : " , props.item[i].Age,"  연락처: ", props.item[i].Contact,
     "  수준: ", props.item[i].Level , "  장소: ", props.item[i].Place, "  유니폼: ", props.item[i].Uniform, " 매치 성사 여부: " , Link
     ])
     }
@@ -59,7 +31,7 @@ const Load_post = (props) =>{
         new_arr.map((id,idx)=>( // id : 요소값 idx : 인덱스
             <View style = {style.container} key={idx}>
             <View style = {style.box}>
-            <Text style = {{color : 'black'}}> {id} </Text>
+            <Text style = {style.text}> {id} </Text>
             </View>
             </View>
         ))

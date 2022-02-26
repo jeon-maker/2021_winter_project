@@ -4,35 +4,7 @@ import firestore , { doc  } from '@react-native-firebase/firestore';
 import { render } from "react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod";
 import { NavigationContainer } from "@react-navigation/native";
 import MainScreen from "./MainScreen";
-
-
-const style = StyleSheet.create({
-    container: {
-        backgroundColor: '#AEB404',
-        flex: 1,
-        margin : 20
-    },
-    text: {
-        fontSize: 30,
-        color: '#21610B',
-        textAlign: 'center'
-    },
-    Button: {
-        color: 'black',
-        fontSize: 40,
-    },
-    input: {
-        height: 40,
-        margin: 50,
-        borderWidth: 5,
-        padding: 10,
-        color: 'black'
-    },
-    box : {
-        margin: 20,
-        backgroundColor:'white',        
-    }
-})
+import style from "./style";
 
 
 const delete_ = (id) =>{
