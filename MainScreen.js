@@ -6,7 +6,7 @@ import Load_post from "./load";
 
 const style = StyleSheet.create({
     container: {
-        backgroundColor: '#AEB404',
+        backgroundColor: '#B9BFFF',
         flex: 1
     },
     text: {
@@ -89,7 +89,6 @@ export default class MainScreen extends Component {
                 <Text style={{ fontSize: 30  ,color:'blue'}}> 환영합니다 {this.props.route.params.prevID} 님</Text>
                 <Text style={{ fontSize: 30  ,color:'blue'}}> 환영합니다 {this.state.prevID} 님</Text>
                 <Button onPress={() => this.goPostScreen()} title=" 게시글" />
-                <Button onPress={() => this.goLetterScreen()} title="쪽지함 " />
                 <Button color={style.Button.color} onPress={() => this.goWriteScreen()} title="글 작성하기" />
                 <Button color={style.Button.color} onPress={() => this.goFilterScreen()} title="필터" />
                 <Button color={style.Button.color} onPress={() => this.goEditScreen()} title="내가 쓴 글 " />

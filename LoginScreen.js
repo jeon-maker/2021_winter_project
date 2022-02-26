@@ -4,7 +4,7 @@ import firestore , { doc  } from '@react-native-firebase/firestore';
 
 const style = StyleSheet.create({
     container: {
-        backgroundColor: '#AEB404',
+        backgroundColor: '#B9BFFF',
         flex: 1
     },
     text: {

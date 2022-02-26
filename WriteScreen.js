@@ -5,12 +5,12 @@ import firestore , { doc  } from '@react-native-firebase/firestore';
 const date = new Date();
 const style = StyleSheet.create({
     container: {
-        backgroundColor: '#AEB404',
+        backgroundColor: '#B9BFFF',
         flex: 1
     },
     text: {
-        fontSize: 30,
-        color: '#21610B',
+        fontSize: 25,
+        color: 'black',
         textAlign: 'center'
     },
     Button: {
@@ -29,6 +29,7 @@ const style = StyleSheet.create({
 export default class WriteScreen extends Component {
     state = {
         date:'',
+        time: '',
         age:'',
         level:'',
         place:'',
@@ -42,6 +43,11 @@ export default class WriteScreen extends Component {
     onChangeDate = (event) =>{
         this.setState({
             date : event
+        })
+    }
+    onChangeTime = (event) =>{
+        this.setState({
+            time : event
         })
     }
     onChangeAge = (event) =>{
@@ -81,6 +87,7 @@ export default class WriteScreen extends Component {
             const db = firestore().collection('Posts').doc(this.state.prevID + " "+ date );
             db.set({
                 Date : prevState.date,
+                Time : prevState.time,
                 Age : prevState.age,
                 Level : prevState.level,
                 Place : prevState.place,
@@ -99,11 +106,18 @@ export default class WriteScreen extends Component {
             <ScrollView>
             <View>
                 <Text style={{ fontSize: 30 }}>Write Screen</Text>
-                <Text>{this.state.prevID}</Text>
+                <Text style={style.text}>반드시 지정된 양식을 따라주세요.</Text>
+                <Text>{this.state.prevID} 님의 글</Text>
+                <Text>  </Text>
                 <TextInput
                     style={style.input}
                     onChangeText={this.onChangeDate}
-                    placeholder="날짜, 시간 을 입력하세요"
+                    placeholder="날짜를 입력하세요 ex)2022.02.24" 
+                />
+                <TextInput
+                    style={style.input}
+                    onChangeText={this.onChangeTime}
+                    placeholder="시간을 입력하세요 ex) 오전 10시 -> 10:00 , 오후 6시 -> 18:00" 
                 />
                 <TextInput
                     style={style.input}
@@ -113,7 +127,7 @@ export default class WriteScreen extends Component {
                 <TextInput
                     style={style.input}
                     onChangeText={this.onChangeLevel}
-                    placeholder="팀 레벨을 입력하세요"
+                    placeholder="팀 레벨을 입력하세요 "
                 />
                 <TextInput
                     style={style.input}

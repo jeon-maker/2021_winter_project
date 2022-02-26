@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { View, Text, Button, StyleSheet , ScrollView } from 'react-native';
 import LoginScreen from "./LoginScreen";
 import firestore , { doc  } from '@react-native-firebase/firestore';
-import Load_post from "./load";
+import Load_post2 from "./load";
 
 const style = StyleSheet.create({
     container: {
-        backgroundColor: '#AEB404',
+        backgroundColor: '#B9BFFF',
         flex: 1
     },
     text: {
@@ -47,7 +47,7 @@ export default class PostScreen extends Component {
                 <ScrollView>
                 <Text style={{ fontSize: 30 }}>Post Screen</Text>
                 <Button color={style.Button.color} onPress={() => this.backToMainScreen()} title='메인화면' />
-                <Load_post id ={this.state.doc_id} item ={this.state.doc_item} />
+                <Load_post2 id ={this.state.doc_id} item ={this.state.doc_item}  />
                 </ScrollView>
             </View>
         )

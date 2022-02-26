@@ -6,7 +6,7 @@ import TouchHistoryMath from "react-native/Libraries/Interaction/TouchHistoryMat
 
 const style = StyleSheet.create({
     container: {
-        backgroundColor: '#AEB404',
+        backgroundColor: '#B9BFFF',
         flex: 1,
         margin : 20
     },
