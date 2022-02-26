@@ -93,11 +93,11 @@ export default class JoinScreen extends Component {
                     placeholder="PW"
                     value={this.state.pw}
                 />
-                <Button title="회원가입" onPress={this.onJoin} />
+                <Button color={style.Button.color} title="회원가입" onPress={this.onJoin} />
                 <Text>
                     {this.state.id_list}
                 </Text>
-                <Button onPress={() => this.gotoStartScreen()} title='back to Start' />
+                <Button color={style.Button.color} onPress={() => this.gotoStartScreen()} title='back to Start' />
             </View>
         )
     }
